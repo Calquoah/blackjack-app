@@ -1,5 +1,5 @@
-let firstCard = 10
-let secondCard = 11
+let firstCard = 7
+let secondCard = 8
 let sum = firstCard + secondCard
 
 // Now we need a way for JS to keep track of the
@@ -8,34 +8,54 @@ let sum = firstCard + secondCard
 
 let hasBlackJack = false
 let isAlive = true
+let message = ""
 
+// 1. Store the message-el paragraph in a variable called messageEl
 
-// Write the conditional according to these rules:
+let messageEl = document.getElementById("message-el")
 
-// if less than or equal to 20 -> "Do you want to draw a new card? 🙂"
-// else if exactly 21 -> "Wohoo! You've got Blackjack! 🥳"
-// else -> "You're out of the game! 😭"
+// 2. Store the sum paragraph in a variable called sumEl
 
-if (sum <= 20) {
-    console.log("Do you want to draw a new card? 🙂")
-} else if (sum === 21) {
-    console.log("WOOHOO! YOU'VE GOT BLACKJACK!!! 🥳")
-    // now here, we need to reassign the 
-    // hasBlackJack variable because in this
-    // instance, the player does have it.
-    // So, we do this:
-    hasBlackJack = true
-} else {
-    console.log("You're out of the game, buddy! 😭")
-    isAlive = false
+let sumEl = document.getElementById("sum-el")
+
+// Now let's learn about the "Query Selector"
+
+// let sumEl = document.querySelector("#sum-el") 
+// With this method, we have to specify the element
+// by identifying its selector, in this case using the 
+// "#"
+
+// 2. Store the cards paragraph in a variable called cardsEl
+
+let cardsEl = document.getElementById("cards-el")
+
+// Create the startGame() function
+
+function startGame() {
+    // 3. Render the cars on the page using this format -> "Cards: 10 4"
+    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+    
+    // 3. Render the sum on the page using this format -> "Sum: 14"
+    sumEl.textContent = "Sum: " + sum
+
+    if (sum <= 20) {
+        message = "Do you want to draw a new card?"
+    } else if (sum === 21) {
+        message = "You've got Blackjack!"
+        // now here, we need to reassign the 
+        // hasBlackJack variable because in this
+        // instance, the player does have it.
+        // So, we do this:
+        hasBlackJack = true
+    } else {
+        message = "You're out of the game!"
+        isAlive = false
+    }
+
+     // 2. Display the message in the messageEl using messageEl.textContent
+    messageEl.textContent = message
 }
 
-
-// CASH OUT!
-console.log(hasBlackJack)
-
-// Now we have an app that keeps sense, keeps a
-// record of the data in a sensible way....
 
 
 // First Challenge 
@@ -171,3 +191,30 @@ console.log(hasBlackJack)
 
 // 3. Log it out!
 // console.log(message)
+
+// Write the conditional according to these rules:
+
+// if less than or equal to 20 -> "Do you want to draw a new card? 🙂"
+// else if exactly 21 -> "Woohoo! You've got Blackjack! 🥳"
+// else -> "You're out of the game! 😭"
+
+// if (sum <= 20) {
+    // console.log("Do you want to draw a new card? 🙂")
+// } else if (sum === 21) {
+    // console.log("WOOHOO! YOU'VE GOT BLACKJACK!!! 🥳")
+        // now here, we need to reassign the 
+        // hasBlackJack variable because in this
+        // instance, the player does have it.
+        // So, we do this:
+    // hasBlackJack = true
+// } else {
+    // console.log("You're out of the game, buddy! 😭")
+    // isAlive = false
+// }
+
+
+// CASH OUT!
+// console.log(hasBlackJack)
+
+// Now we have an app that keeps sense, keeps a
+// record of the data in a sensible way....

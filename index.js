@@ -1,5 +1,15 @@
 let firstCard = 7
-let secondCard = 8
+let secondCard = 7
+
+// Now we're going to create an "Array", or list of items, 
+// to display all of the cards in the paragraph
+// Also, take a peek at the bottom for a more
+// in-depth look at what arrays are...
+
+// To do that, do this: [] <-- this is the notation for an array
+
+// 1. Create a new array - cards - that contains firstCard and secondCard
+let cards = [firstCard, secondCard]
 let sum = firstCard + secondCard
 
 // Now we need a way for JS to keep track of the
@@ -31,9 +41,19 @@ let cardsEl = document.getElementById("cards-el")
 
 // Create the startGame() function
 
+// Now, since we have the startGame() in the 
+// newCard (), it doesn't make sense to have it there
+// so, it's best to:
+
+// Create a new function called startGame() that calls renderGame()
+
 function startGame() {
+    renderGame()
+}
+
+function renderGame() {
     // 3. Render the cars on the page using this format -> "Cards: 10 4"
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+    cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1]
     
     // 3. Render the sum on the page using this format -> "Sum: 14"
     sumEl.textContent = "Sum: " + sum
@@ -55,6 +75,21 @@ function startGame() {
      // 2. Display the message in the messageEl using messageEl.textContent
     messageEl.textContent = message
 }
+
+// 2. Create a function newCard() that logs out "Drawing a new card from the deck!"
+
+function newCard() {
+    console.log("Drawing a new card from the deck!")
+    // 1. Create a card variable, and hard code its value to a number (2-11)
+    let card = 4
+    // 2. Add the new card to the sum variable
+    sum += card
+    // Push the card to the cards array
+    cards.push(card)
+    console.log(cards)
+    // 3. Call startGame()
+    renderGame()
+}   
 
 
 
@@ -218,3 +253,122 @@ function startGame() {
 
 // Now we have an app that keeps sense, keeps a
 // record of the data in a sensible way....
+
+
+// Intro to Arrays:
+// Arrays - ordered lists of items
+
+// let featuredPosts = [
+    // "Check out my Netflix clone", 
+    // "Here's the code for my project",
+    // "I've just relaunched my portfolio"
+// ]
+
+// Create an array that lists your i.e. experience, education, licenses, skills or similar
+// The items of the array should be strings
+
+// let experience = [
+    // "Freelance Copyeditor", 
+    // "Staff Writer", 
+    // "English Second Language Teacher", 
+    // "Assistant Language Teacher"
+// ]
+
+// Good to know, Arrays are "0 indexed", meaning
+// that they start counting at 0. So the first
+// item in your Array, or list, will be called 
+// by labeling it with a 0.
+
+// For example, if I want to call the "Freelance Copyeditor"
+// from my Array, this is how I do it:
+
+// console.log( experience[0] )
+
+// Array Challenge:
+
+// let experience = ["CEO at Scrimba", "Frontend developer at Xeneta", "People counter for Norstat"]
+
+// Make the following appear in the console:
+// Frontend developer at Xeneta
+// People counter for Norstat
+// CEO at Scrimba
+
+// console.log( experience[1] )
+// console.log( experience[2] )
+// console.log( experience[0] )
+
+// console.log( featuredPosts.length )
+
+// The "length" property counts things normally 
+// and so starts with 1. It is always one larger than 
+// the final index...
+
+// Second Array Challenge
+
+// Array - ordered list of items - composite / complex data type
+
+// Create an array that describes yourself. Use the three primitive data types you've learned
+// It should contain your name (string), your age (number), and whether you like pizza (boolean)
+
+// let matt = [
+//    "Matt Kogoy", 
+//    33, 
+//    true
+// ]
+
+// New Array Challenge
+
+// let cards = [7, 4]
+// cards.push(6)
+//console.log(cards)
+
+// Push the newMessage to the messages array, and then log out the array
+
+// let messages = [
+//     "Hey, how's it going?",        
+//     "I'm great, thank you! How about you?",
+//     "All good. Been working on my portfolio lately."
+// ]
+
+// let newMessage = "Same here!"
+
+// SOLUTION:
+// messages.push(newMessage)
+// console.log(messages)
+
+// Now, how do you remove a message
+// from the array?
+
+// CHALLENGE: // How can you remove the last item in an array? Try to google it!
+
+// You would use the "pop()" property, as in:
+
+// messages.pop()
+// console.log(messages)
+
+
+// Learning how to count in JavaScript
+
+// // Count to ten!
+
+// We need to specify...
+
+// Where should we START counting?
+// Where is the FINISH line?
+// What's the STEP SIZE we should use?
+
+//    START           FINISH       STEP SIZE
+// for ( let count = 1;  count < 11;  count += 1 )  {
+    
+//    console.log(count)
+
+// }
+
+// Now, modify the above loop so that it counts from 1 to 20
+// Do that by doing this:
+
+// for ( let count = 1; count < 21; count += 1 )
+
+// Now, to count from 10 to 20, this is what you do:
+
+// for ( let count = 10; count < 21; count += 1 )

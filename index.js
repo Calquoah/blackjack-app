@@ -1,5 +1,5 @@
-let firstCard = 7
-let secondCard = 7
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
 
 // Now we're going to create an "Array", or list of items, 
 // to display all of the cards in the paragraph
@@ -39,6 +39,18 @@ let sumEl = document.getElementById("sum-el")
 
 let cardsEl = document.getElementById("cards-el")
 
+// 1. Create a function, getRandomCard(), that always returns the number 5
+// Make this function return a random number between 1 and 13
+
+function getRandomCard() {
+    let randomNumber = Math.floor( Math.random() * 14 )
+    return randomNumber
+}
+
+console.log( getRandomCard() )
+
+let randomCard = getRandomCard()
+
 // Create the startGame() function
 
 // Now, since we have the startGame() in the 
@@ -53,7 +65,12 @@ function startGame() {
 
 function renderGame() {
     // 3. Render the cars on the page using this format -> "Cards: 10 4"
-    cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1]
+    cardsEl.textContent = "Cards: " // + cards[0] + " " + cards[1]
+
+    // Create a for loop that renders out all the cards instead of just two
+    for (let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
+    }
     
     // 3. Render the sum on the page using this format -> "Sum: 14"
     sumEl.textContent = "Sum: " + sum
@@ -80,8 +97,7 @@ function renderGame() {
 
 function newCard() {
     console.log("Drawing a new card from the deck!")
-    // 1. Create a card variable, and hard code its value to a number (2-11)
-    let card = 4
+    let card = getRandomCard()
     // 2. Add the new card to the sum variable
     sum += card
     // Push the card to the cards array
@@ -372,3 +388,193 @@ function newCard() {
 // Now, to count from 10 to 20, this is what you do:
 
 // for ( let count = 10; count < 21; count += 1 )
+
+
+/* CHALLENGE with LOOPS
+
+ Create a for loop that counts from 10 to 100 in steps of 10
+ Use console.log to log out the numbers
+
+ Do that like this:
+ for (let i = 10; i < 101; i += 10) {
+     console.log(i)
+ } */
+
+
+/* Array + Loop Challenge
+
+ let cards = [7, 3, 9]
+
+ Create a for loop that logs out all the cards in the array
+ Use cards.length to specify how long the loop should run
+
+ for (let i = 0; i < cards.length; i += 1) {
+    console.log(cards[i])
+ }
+
+ for the last part - "i += 1" - you can, instead do this: "i++"
+ It works the exact same way as "i += 1" */
+
+ 
+ 
+ /* Another Challenge, this time you'll do this: 
+
+
+let sentence = ["Hello ", "my ", "name ", "is ", "Per"] 
+let greetingEl = document.getElementById("greeting-el")
+
+// Render the sentence in the greetingEl paragraph using a for loop and .textContent
+
+greetingEl.textContent = sentence <-- this does not go here, it goes inside of the curly brackets
+
+for (let i = 0; i < sentence.length; i++) {
+    greetingEl.textContent += sentence[i]
+}
+
+We do the "+=" with the greetingEl because we want to keep the previous
+content intact inside of the array.
+
+Bonus Challenge:
+
+If you take away the spaces from, for example, "Hello ", you end up with 
+HellomynameisPer
+
+to keep these spaces even after removing them - e.g. "Hello" - you create this code:
+
+for (let i = 0; i < sentence.length; i++) {
+    greetingEl.textContent += sentence[i] + " "
+} */
+
+
+/* New Challenge - Returning Values in Functions
+
+let player1Time = 102
+let player2Time = 107
+
+You want to return the fastest player using a function
+Write this code:
+
+function getFastestRaceTime() {
+    if (player1Time < player2Time) {
+        return player1Time
+    } else if (player1Time < player2Time) {
+        return player2Time
+    } else {
+        return player1Time <-- here you could "return" either players' time
+    }
+} 
+
+let fastestRace = getFastestRaceTime()
+
+console.log(fastestRace) <-- this will return whatever is inside the function
+
+*/
+
+/* Also, neat little trick, if you want to have your cursor on multiple lines
+at one time, you simply select a word and then do "ctrl + d" */
+
+/* New Challenge - 
+
+// Write a function that returns the total race time
+// Call/invoke the function and store the returned value in a new variable
+// Finally, log the variable out
+
+Here's the solution:
+
+function getTotalRaceTime() {
+    return player1Time + player2Time
+}
+
+let totalTime = getTotalRaceTime()
+console.log(totalTime) */
+
+
+/* Generating Random Numbers with Math.random()
+
+let randomNumber = Math.random()
+
+console.log(randomNumber)
+
+
+/* 
+
+What does Math.random() do?
+
+Your answer: it generates a random number between 0 and 1 (not inclusive of 1)
+
+*/
+
+/* Now, here's a new Math property:
+
+
+// let randomNumber = Math.random() * 6
+
+let flooredNumber = Math.floor(3.45632)
+
+console.log(flooredNumber)
+
+
+/* 
+
+What does Math.floor() do to positive numbers?
+
+Your answer: it removes the decimals - so it'll, for example, show "3" in the console
+
+*/
+
+
+/* Challenge - Create dice by using Math.random() and Math.floor()
+
+let randomNumber = Math.floor( Math.random() * 6 )
+
+console.log(randomNumber)
+
+/* 
+
+Write down all the possible values randomNumber can hold now!
+
+Numbers from 1 - 5
+
+Shoving the Math.random into the Math.floor essentially removes all the decimals
+
+
+*/
+
+/* Final Challenge for the dice function:
+
+// Try to modify the expression so that we get a range from 1 to 6
+let randomNumber = Math.floor( Math.random() * 6 )
+
+My Solution:
+
+let randomNumber = Math.floor( Math.random() * 7 )
+
+Per's Solution:
+
+let randomNumber = Math.floor( Math.random() * 6) + 1
+
+console.log(randomNumber)
+
+/* Final, final challenge :) 
+
+// Create a function, rollDice(), that returns a random number between 1 and 6
+
+
+My Solution:
+
+function rollDice() {
+    let randomNumber = Math.floor( Math.random() * 6 ) + 1
+}
+
+(rollDice) 
+
+Per's Solution:
+
+function rollDice() {
+    let randomNumber = Math.floor( Math.random() * 6 ) + 1
+    return randomNumber
+} 
+
+console.log( rollDice() )
+
+*/

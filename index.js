@@ -3,10 +3,10 @@
 
 // 2. Create the player object. Give it two keys, name and chips, and set their values
 
-let player = {
-    name: "Matt",
-    chips: 200
-}
+// let player = {
+//     name: "Matt",
+//     chips: 200
+// }
 
 // Now we're going to create an "Array", or list of items, 
 // to display all of the cards in the paragraph
@@ -48,10 +48,10 @@ let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 
 // 3. Grab ahold of the player-el paragraph and store it in a variable called playerEl
-let playerEl = document.getElementById("player-el")
+// let playerEl = document.getElementById("player-el")
 
 // 4. Render the player's name and chips in playerEl
-playerEl.textContent = player.name + ": $" + player.chips
+// playerEl.textContent = player.name + ": $" + player.chips
 
 
 // 1. Create a function, getRandomCard(), that always returns the number 5

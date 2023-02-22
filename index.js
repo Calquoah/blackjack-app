@@ -5,7 +5,7 @@
 
 let player = {
     name: "Matt",
-    chips: 100
+    chips: 200
 }
 
 // Now we're going to create an "Array", or list of items, 

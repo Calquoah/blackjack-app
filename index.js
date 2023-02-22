@@ -1,5 +1,12 @@
-let firstCard = getRandomCard()
-let secondCard = getRandomCard()
+// let firstCard = getRandomCard()
+// let secondCard = getRandomCard()
+
+// 2. Create the player object. Give it two keys, name and chips, and set their values
+
+let player = {
+    name: "Matt",
+    chips: 100
+}
 
 // Now we're going to create an "Array", or list of items, 
 // to display all of the cards in the paragraph
@@ -9,15 +16,16 @@ let secondCard = getRandomCard()
 // To do that, do this: [] <-- this is the notation for an array
 
 // 1. Create a new array - cards - that contains firstCard and secondCard
-let cards = [firstCard, secondCard]
-let sum = firstCard + secondCard
+let cards = []              // [firstCard, secondCard]
+// console.log(cards) just to be sure you don't have a value before you start the game!
+let sum = 0                // firstCard + secondCard
 
 // Now we need a way for JS to keep track of the
 // game. Did the player score BlackJack or not?
 // So, here's what we do:
 
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = ""
 
 // 1. Store the message-el paragraph in a variable called messageEl
@@ -39,15 +47,42 @@ let sumEl = document.getElementById("sum-el")
 
 let cardsEl = document.getElementById("cards-el")
 
+// 3. Grab ahold of the player-el paragraph and store it in a variable called playerEl
+let playerEl = document.getElementById("player-el")
+
+// 4. Render the player's name and chips in playerEl
+playerEl.textContent = player.name + ": $" + player.chips
+
+
 // 1. Create a function, getRandomCard(), that always returns the number 5
+
 // Make this function return a random number between 1 and 13
 
 function getRandomCard() {
+    /* My solution:
     let randomNumber = Math.floor( Math.random() * 14 )
-    return randomNumber
-}
+    return randomNumber */
 
-console.log( getRandomCard() )
+    /* Per's Solution  --> return Math.floor( Math.random()*13 ) + 1 */
+
+    /* Next challenge, 
+     // if 1     -> return 11
+    // if 11-13 -> return 10 */
+
+    /* Solution */
+
+    let randomNumber = Math.floor( Math.random()*13 ) + 1
+
+    if (randomNumber > 10) {
+        return 10
+    } else if (randomNumber === 1) {
+        return 11
+    } else {
+        return randomNumber
+    }
+
+    // return Math.floor( Math.random()*13 ) + 1
+}
 
 let randomCard = getRandomCard()
 
@@ -60,6 +95,18 @@ let randomCard = getRandomCard()
 // Create a new function called startGame() that calls renderGame()
 
 function startGame() {
+    isAlive = true
+    // Generate two random numbers
+    // let firstCard = Math.floor( Math.random()*13 ) + 1
+    // let secondCard = Math.floor( Math.random()*13 ) + 1
+
+    /* Per's Solution */
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+
+    // Re-assign the cards and sum variables so that the game can start
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
     renderGame()
 }
 
@@ -96,7 +143,8 @@ function renderGame() {
 // 2. Create a function newCard() that logs out "Drawing a new card from the deck!"
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
+    // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
+    if (isAlive === true && hasBlackJack === false) {
     let card = getRandomCard()
     // 2. Add the new card to the sum variable
     sum += card
@@ -105,6 +153,7 @@ function newCard() {
     console.log(cards)
     // 3. Call startGame()
     renderGame()
+    }
 }   
 
 
@@ -578,3 +627,111 @@ function rollDice() {
 console.log( rollDice() )
 
 */
+
+/* Logical Operators Detour */
+
+/* let hasCompletedCourse = true
+let givesCertificate = true
+
+/* Could create this condition with what you know by
+nesting two "if" statements together like this:
+
+if (hasCompletedCourse === true) {
+    if (givesCertificate === true) {
+        generateCertificate()
+    }
+}
+
+/* But the above is a clunky way of writing code,
+so do this instead:
+
+if (hasCompleteCourse === true && givesCertificate === true) {
+    generateCertificate()
+}
+
+function generateCertificate() {
+    console.log("Generating certificate....")
+} */
+
+
+/* Logical Operator Challenge */
+
+/* let hasSolvedChallenge = false
+let hasHintsLeft = false
+
+// Create an if statement that checks that both variables are false.
+// If so, run the showSolution() function
+
+if (hasSolvedChallenge === false && hasHintsLeft === false) {
+    showSolution()
+}
+
+function showSolution() {
+    console.log("Showing the solution....")
+} */
+
+
+
+/* The logical OR operator */
+
+/* // Create two boolean variables, likesDocumentaries and likesStartups
+// Use an OR statement (||) to call recommendMovie() if either of those variables are true
+
+let likesDocumentaries = true
+let likesStartUps = false
+
+if (likesDocumentaries === true || likesStartUps === true) {
+    recommendMovie()
+}
+
+function recommendMovie() {
+    console.log("Hey, check out this new film we think you will like!")
+} */
+
+
+
+
+/* Learning About "Objects"
+
+let playerName = "Matt"
+let playerChips = 145
+
+let playerEl = document.getElementById("player-el")
+playerEl.textContent = playerName + ": $" + playerChips
+
+
+I will now condense the above information into an Object,
+like this:
+
+let player = {
+    name: "Matt", 
+    chips: 145
+}
+
+let playerEl = document.getElementById("player-el")
+playerEl.textContent = player.name +": $" + player.chips */
+
+
+
+/* Object Challenge: 
+
+// Create an object that represents an airbnb castle listing.
+// It should contain at least one boolean, one string, one number, and one array
+// Log out at least two of the keys using the dot notation
+
+let castleListing = {
+    title: "Live like a king in my castle",
+    isAncient: true,
+    name: "Kogoy's Epic Castle",
+    price: 100,
+    features: ["hottub", "wifi", "balcony", "sword", "shield", "dragon"]
+}
+
+Per's Solution:
+
+let castle = {
+    title: "Live like a king in my castle",
+    price: 190,
+    isSuperHost: true,
+    images: ["img/castle1.png", "img/castle2.png"]
+} */
